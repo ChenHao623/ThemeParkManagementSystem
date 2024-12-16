@@ -145,3 +145,45 @@ public class Ride {
         rideHistory.sort(comparator);
     }
 }
+import java.io.*;
+
+public class Ride {
+    public void exportRideHistory(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Visitor visitor : rideHistory) {
+                String data = String.format("%s,%d,%s,%d,%s",
+                        visitor.getName(),
+                        visitor.getAge(),
+                        visitor.getGender(),
+                        visitor.getNumberOfVisits(),
+                        visitor.getMembershipStatus());
+                writer.write(data);
+                writer.newLine();
+            }
+            System.out.println("Ride history successfully exported to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error exporting ride history: " + e.getMessage());
+        }
+    }
+
+    public void importRideHistory(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 5) {
+                    Visitor visitor = new Visitor(
+                            parts[0].trim(),
+                            Integer.parseInt(parts[1].trim()),
+                            parts[2].trim(),
+                            Integer.parseInt(parts[3].trim()),
+                            parts[4].trim());
+                    rideHistory.add(visitor);
+                }
+            }
+            System.out.println("Ride history successfully imported from " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error importing ride history: " + e.getMessage());
+        }
+    }
+}
