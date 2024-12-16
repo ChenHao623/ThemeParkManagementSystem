@@ -1,11 +1,10 @@
 import java.util.Objects;
 
 /**
- * Student's name: Hao Chen
+ *  Student's name: Hao Chen
  * Student ID: 24516439
  * This class extends the Person class to represent a visitor.
  *
- * @author [Your Name]
  * @version 1.0
  */
 public class Visitor extends Person {
