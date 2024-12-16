@@ -77,3 +77,38 @@ public class Ride {
         }
     }
 }
+import java.util.*;
+
+public class Ride {
+    private LinkedList<Visitor> rideHistory = new LinkedList<>();
+
+    public void addVisitorToHistory(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Params is null.");
+            return;
+        }
+        rideHistory.add(visitor);
+        System.out.println(visitor.getName() + " has been added to the ride history for " + rideName + ".");
+    }
+
+    public void printRideHistory() {
+        System.out.println("Visitors who have taken the ride " + rideName + ":");
+        for (Visitor visitor : rideHistory) {
+            System.out.println(visitor);
+        }
+    }
+
+    public boolean checkVisitorFromHistory(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Params is null.");
+            return false;
+        }
+        if (rideHistory.contains(visitor)) {
+            System.out.println(visitor.getName() + " is in the ride history for " + rideName + ".");
+            return true;
+        } else {
+            System.out.println(visitor.getName() + " is not in the ride history for " + rideName + ".");
+            return false;
+        }
+    }
+}
