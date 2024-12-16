@@ -10,6 +10,7 @@ public class Ride {
     private String rideType;
     private Employee operator;
     private Queue<Visitor> queue = new LinkedList<>();
+    private LinkedList<Visitor> rideHistory = new LinkedList<>();
 
     public Ride(String rideName, String rideType, Employee operator) {
         this.rideName = rideName;
@@ -70,6 +71,22 @@ public class Ride {
             for (Visitor v : queue) {
                 System.out.println(v);
             }
+        }
+    }
+
+    public void addVisitorToHistory(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Params is null.");
+            return;
+        }
+        rideHistory.add(visitor);
+        System.out.println(visitor.getName() + " has been added to the ride history for " + rideName + ".");
+    }
+
+    public void printRideHistory() {
+        System.out.println("Visitors who have taken the ride " + rideName + ":");
+        for (Visitor visitor : rideHistory) {
+            System.out.println(visitor);
         }
     }
 }
