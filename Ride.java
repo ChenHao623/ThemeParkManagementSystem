@@ -9,6 +9,7 @@ public class Ride {
     private String rideName;
     private String rideType;
     private Employee operator;
+    private Queue<Visitor> queue = new LinkedList<>();
 
     public Ride(String rideName, String rideType, Employee operator) {
         this.rideName = rideName;
@@ -39,4 +40,37 @@ public class Ride {
     public void setOperator(Employee operator) {
         this.operator = operator;
     }
+
+    public void addVisitorToQueue(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Params is null.");
+            return;
+        }
+        queue.add(visitor);
+        System.out.println(visitor.getName() + " has joined the queue for " + rideName + ".");
+    }
+
+    public void removeVisitorFromQueue(Visitor visitor) {
+        if (visitor == null) {
+            System.out.println("Params is null.");
+            return;
+        }
+        if (queue.remove(visitor)) {
+            System.out.println(visitor.getName() + " has been removed from the queue for " + rideName + ".");
+        } else {
+            System.out.println(visitor.getName() + " is not in the queue for " + rideName + ".");
+        }
+    }
+
+    public void printQueue() {
+        if (queue.isEmpty()) {
+            System.out.println("The queue for " + rideName + " is currently empty.");
+        } else {
+            System.out.println("Visitors in the queue for " + rideName + ":");
+            for (Visitor v : queue) {
+                System.out.println(v);
+            }
+        }
+    }
 }
+
