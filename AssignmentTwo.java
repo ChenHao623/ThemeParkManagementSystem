@@ -41,6 +41,7 @@ public class AssignmentTwo {
     // Placeholder for partSeven
     public void partSeven() {}
 }
+
 // 添加 partFourA 和 partFourB 的实现
 public void partFourA() {
     Employee operator = new Employee("Sarah Connor", 30, "Female", "Ride Operator", "Amusement Park");
@@ -88,4 +89,23 @@ public void partFourB() {
 
     System.out.println("\nRide history after sorting:");
     rollerCoaster.printRideHistory();
+}
+
+public void partFive() {
+    Employee operator = new Employee("Sarah Connor", 30, "Female", "Ride Operator", "Amusement Park");
+    Ride ride = new Ride("Cyclone", "Roller Coaster", operator, 4);
+
+    ride.addVisitorToQueue(new Visitor("Visitor 1", 20, "Male", 2, "A"));
+    ride.addVisitorToQueue(new Visitor("Visitor 2", 25, "Female", 3, "B"));
+    ride.addVisitorToQueue(new Visitor("Visitor 3", 30, "Male", 5, "C"));
+    ride.addVisitorToQueue(new Visitor("Visitor 4", 22, "Female", 4, "A"));
+    ride.addVisitorToQueue(new Visitor("Visitor 5", 27, "Male", 1, "B"));
+
+    ride.printQueue();
+    System.out.println();
+    ride.runOneCycle();
+    System.out.println();
+    ride.printQueue();
+    System.out.println();
+    ride.printRideHistory();
 }
