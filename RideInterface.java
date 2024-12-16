@@ -6,7 +6,6 @@
 public interface RideInterface {
     /**
      * Adds a visitor to the queue for the ride.
-     * The visitor will be added to the waiting list for the ride.
      *
      * @param visitor the Visitor to be added to the queue
      */
@@ -14,7 +13,6 @@ public interface RideInterface {
 
     /**
      * Removes a visitor from the queue for the ride.
-     * The visitor will be removed from the waiting list once they take the ride.
      *
      * @param visitor the Visitor to be removed from the queue
      */
@@ -26,7 +24,7 @@ public interface RideInterface {
     void printQueue();
 
     /**
-     * Runs the ride for one cycle, allowing a set number of visitors to take the ride.
+     * Runs one ride cycle for a set number of visitors.
      */
     void runOneCycle();
 
@@ -53,7 +51,7 @@ public interface RideInterface {
     int numberOfVisitors();
 
     /**
-     * Prints the list of visitors who have taken the ride, showing the ride history.
+     * Prints the ride history.
      */
     void printRideHistory();
 }
