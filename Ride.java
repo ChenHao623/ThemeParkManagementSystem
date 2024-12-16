@@ -112,3 +112,36 @@ public class Ride {
         }
     }
 }
+import java.util.*;
+
+public class Ride {
+    private int maxRider = 4;
+    private int numOfCycles = 0;
+
+    public void runOneCycle() {
+        if (operator == null) {
+            System.out.println("Cannot run the ride: No operator assigned.");
+            return;
+        }
+        if (queue.isEmpty()) {
+            System.out.println("Cannot run the ride: No visitors in the queue.");
+            return;
+        }
+        int ridersThisCycle = Math.min(maxRider, queue.size());
+        System.out.println("Running the ride for " + ridersThisCycle + " visitors.");
+        for (int i = 0; i < ridersThisCycle; i++) {
+            Visitor visitor = queue.poll();
+            rideHistory.add(visitor);
+        }
+        numOfCycles++;
+        System.out.println("Ride completed cycle #" + numOfCycles + ".");
+    }
+
+    public void sortRideHistory(Comparator<Visitor> comparator) {
+        if (rideHistory.isEmpty()) {
+            System.out.println("Ride history is empty. Nothing to sort.");
+            return;
+        }
+        rideHistory.sort(comparator);
+    }
+}
